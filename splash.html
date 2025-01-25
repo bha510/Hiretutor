@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Screen</title>
+   <Style>
+    /* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Splash container styling */
+.splash-container {
+    text-align: center;
+    animation: fade-in 1.5s ease-in-out;
+}
+
+.splash-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: slide-in 1.5s ease-out;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    animation: fade-in-text 2s ease-in-out;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    animation: fade-in-text 2.5s ease-in-out;
+}
+
+/* Button Styling */
+.btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background: linear-gradient(135deg, #e74c3c, #e67e22);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: slide-in-btn 2s ease-out;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #c0392b, #d35400);
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-text {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in-btn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+   </Style>
+</head>
+<body>
+    <div class="splash-container">
+        <img src="HIRE.png" alt="App Logo" class="splash-logo">
+        <h1>Welcome to HireTutor</h1>
+        <p>Your gateway to finding the best teachers.</p>
+        <button id="get-started-btn" class="btn">Get Started</button>
+    </div>
+
+    <script>
+        // Check if the splash screen has been shown before
+if (localStorage.getItem("splashShown")) {
+    // Redirect to auth.html if splash screen has already been shown
+    window.location.href = "auth.html";
+} else {
+    // Set a flag in localStorage when the user clicks the "Get Started" button
+    document.getElementById("get-started-btn").addEventListener("click", () => {
+        localStorage.setItem("splashShown", true); // Save flag to localStorage
+        window.location.href = "auth.html"; // Redirect to auth.html
+    });
+}
+
+    </script>
+</body>
+</html>
